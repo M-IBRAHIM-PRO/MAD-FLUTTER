@@ -1,4 +1,5 @@
 import 'package:ch_8_practice/Pages/about.dart';
+import 'package:ch_8_practice/Pages/gratitude.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -10,7 +11,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomeState extends State<HomePage> {
-  String _howAreYou = "...";
+  final String _howAreYou = "...";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,17 +28,15 @@ class _HomeState extends State<HomePage> {
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Text(
             'Grateful for: $_howAreYou',
-            style: TextStyle(fontSize: 32.0),
+            style: const TextStyle(fontSize: 32.0),
           ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        tooltip: 'Gratitude Page',
-        child: Icon(Icons.sentiment_satisfied),
+        onPressed: (){},
       ),
     );
   }
@@ -51,16 +50,16 @@ void _openPageAbout(
           fullscreenDialog: fullscreenDialog, builder: (context) => About()));
 }
 
-// void _openPageGratitude(
-//     {required BuildContext context, bool fullscreenDialog = false}) async {
-//   final String _gratitudeResponse = await Navigator.push(
-//     context,
-//     MaterialPageRoute(
-//       fullscreenDialog: fullscreenDialog,
-//       builder: (context) => Gratitude(
-//         radioGroupValue: -1,
-//       ),
-//     ),
-//   );
-//   _howAreYou = _gratitudeResponse ?? '';
-// }
+void _openPageGratitude(
+    {required BuildContext context, bool fullscreenDialog = false}) async {
+  final String gratitudeResponse = await Navigator.push(
+    context,
+    MaterialPageRoute(
+      fullscreenDialog: fullscreenDialog,
+      builder: (context) => const Gratitude(
+        radioGroupValue: -1,
+      ),
+    ),
+  );
+  var _howAreYou = gratitudeResponse;
+}

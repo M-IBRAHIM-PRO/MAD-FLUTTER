@@ -5,12 +5,13 @@ class Gratitude extends StatefulWidget {
 
   const Gratitude({super.key, required this.radioGroupValue});
   
+
   @override
   _GratitudeState createState() => _GratitudeState();
 }
 
 class _GratitudeState extends State<Gratitude> {
-  final List<dynamic> _gratitudeList = List.empty();
+  List<String> _gratitudeList = List.empty();
   late String _selectedGratitude;
   late int _radioGroupValue;
   void _radioOnChanged(int index) {
